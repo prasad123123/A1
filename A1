@@ -1,0 +1,72 @@
+a=[]
+b=[]
+c=[]
+def aceept(A,Str):
+    n=int(input("\n enter the no of std who plays %s :"%Str))
+    for i in range (0,n):
+        print("enter the name/roll no. of student ",i+1,end="")
+        x=input(":")
+        A.append(x)
+    print("\ngroupof %s :"%Str,A)
+def inter(l1,l2,s1,s2):
+    x=[]
+    for i in (l1):
+        for j in (l2):
+            if (i==j):
+                x.append(i)
+    print("list of students who play both",s1,"and",s2,":",x)
+
+def diff(l1,l2,s1,s2):
+    x=[]
+    for i in (l1):
+        if i not in (l2):
+             x.append(i)
+    
+    for j in (l2):
+        if j not in (l1):
+             x.append(j)
+    print("list of students who play either",s1,"or",s2,"but not both:",x)
+  
+def only1(l1,l2,l3,s1,s2,s3):
+    x=[]
+    for i in (l1):
+        if i not in (l2):
+            if i not in (l3):
+             x.append(i)
+    print("list of students who play",s1," neither",s2,"nor",s3,":",x)
+
+def only2(l1,l2,l3,s1,s2,s3):
+    x=[]
+    for i in (l1):
+        if i in (l2):
+            if i not in (l3):
+             x.append(i)
+    print("list of students who play ",s1,"and",s2,"but not",s3,":",x)
+    
+def main():
+   
+    print("\n 0:accept and display")
+    print("\n1:List of students who play both cricket and badminton.")
+    print("\n 2:List of students who play either cricket or badminton but not both.")
+    print("\n 3:Number of students who play neither cricket nor badminton.")
+    print("\n 4:Number of students who play cricket and football but not badminton.")
+    print("\n 5:Exit")
+    while True:
+        ch=int(input("\nenter the choice:\t"))
+        if ch==0:
+            aceept(a,"cri")
+            aceept(b,"bad")
+            aceept(c,"fball")
+            print("\ngroupof cricket",a)
+            print("\ngroupof badminton",b)
+            print("\ngroupof football",c)
+        if ch==1:
+            inter(a,b,"cri","bad")
+        if ch==2:
+            diff(a,b,"cri","bad")
+        if ch==3:
+            only1(c,a,b,"fball","cri","bad")
+        if ch==4:
+            only2(a,c,b,"cri","fball","bad")
+        
+main()   
