@@ -1,0 +1,39 @@
+def cm(m,n):
+    for i in range(n):
+        a=[]
+        for j in range (n):
+            a.append(int(-1))
+        m.append(a)
+    i=0
+    j=(n-1)//2
+    s=1
+    cnt=0
+    while (cnt<(n*n)):
+        m[i][j]=s
+        s+=1
+        cnt+=1
+        if(i==0):
+            ni=n-1
+        else:
+            ni=i-1; 
+        if(j==0):
+            nj=n-1
+        else:
+            nj=j-1; 
+        if (m[ni][nj]!=-1):
+            ni=int((i+1)%n)
+            nj=j
+        i=ni
+        j=nj
+    
+    for i in range (n):
+        print("\t\t",end="  ")
+        for j in range (n):
+            print("%2d"%m[i][j],end="  ")
+        print("")
+    print("sum = %d"%int(n*(n*n+1)/2))
+        
+m= []
+n = int(input("\nEnter the order of the Square Matrix (n,n) : "))
+cm(m,n);       
+        
