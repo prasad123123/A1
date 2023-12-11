@@ -1,0 +1,103 @@
+def accept(a, n):
+    for i in range(n):
+        x = int(input("\nEnter the roll no  %d: " % (i + 1)))
+        a.append(x)
+
+
+def itb(a, x, l, h):
+    while l <= h:
+        mid = l + (h - l) // 2
+        if a[mid] == x:
+            return mid
+        elif a[mid] < x:
+            l = mid + 1
+        else:
+            h = mid - 1
+    return -1
+
+
+def rsb(a, x, l, h):
+    if h >= l:
+        mid = l + (h - l) // 2
+        if a[mid] == x:
+            return mid
+        elif a[mid] < x:
+            return rsb(a, x, mid + 1, h)
+        else:
+            return rsb(a, x, l, mid - 1)
+    return -1
+
+
+def fib(a, x, n):
+    f1 = 0
+    f2 = 1
+    f3 = f1 + f2
+    offset = -1
+    while f3 < n:
+        f1 = f2
+        f2 = f3
+        f3 = f1 + f2
+    while f3 > 1:
+        i = min(offset + f1, n - 1)
+        if a[i] == x:
+            return i
+        else:
+            if x < a[i]:
+                f3 = f1
+                f2 = f2 - f1
+                f1 = f3 - f1
+            else:
+                f3 = f2
+                f2 = f1
+                f1 = f3 - f2
+                offset = i
+    if (f2 ==1 and (offset + 1) < n and a[offset + 1] == x):
+        return offset + 1
+    return -1
+
+
+a = []
+while True:
+    print("\n1. Accept Roll no")
+    print("2. Search using Iterative Binary Search")
+    print("3. Search using Recursive Binary Search")
+    print("4. Search using Fibonacci Search")
+    print("5. Exit")
+    
+    choice = int(input("Enter your choice: "))
+    
+    if choice == 1:
+        n = int(input("Enter the number of roll to accept: "))
+        accept(a, n)
+        print("Roll accepted successfully!")
+    
+    elif choice == 2:
+        x = int(input("Enter the Roll to search: "))
+        result = itb(a, x, 0, len(a) - 1)
+        if result != -1:
+            print("Roll found at index", result)
+        else:
+            print("Roll not found")
+    
+    elif choice == 3:
+        x = int(input("Enter the Roll to search: "))
+        result = rsb(a, x, 0, len(a) - 1)
+        if result != -1:
+            print("Roll found at index", result)
+        else:
+            print("Roll not found")
+    
+    elif choice == 4:
+        x = int(input("Enter the Roll to search: "))
+        result = fib(a, x, len(a))
+        if result != -1:
+            print("Roll found at index", result)
+        else:
+            print("Roll not found")
+    
+    elif choice == 5:
+        print("Exiting the program...")
+        break
+    
+    else:
+        print("Invalid choice. Please enter a valid option.")
