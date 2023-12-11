@@ -1,0 +1,83 @@
+def accept(num,marks):
+    for i in range(num):
+        while True:
+            mrk = input("\nEnter marks %d: " % (i + 1))
+            if mrk == 'ab':
+                mrk = -1
+                break
+            mrk = int(mrk)
+            if 0 <= mrk <= 30:
+                break
+            else:
+                print("\nEnter valid input")
+        marks.append(mrk)
+    return marks
+        
+def avg_scr(n,b):
+	sum=0
+	for i in range(n):
+	 	if (b[i]!=-1):
+		 	sum+= b[i]
+	avg=sum/n
+	print("\navg is:-\t",avg)
+
+def high_scr(n,b):
+	max=0
+	for i in range(n):
+		if (b[i]!=-1):
+			if max<b[i]:
+				max=b[i]
+	print("\nhigh score:-\t",max)
+	return max
+	
+def low_scr(n,b):
+	min=31
+	for i in range(n):
+		if (b[i]!=-1):
+			if min>b[i]:
+				min=b[i]
+	print("\nlow score:-\t",min)
+
+def abst(n,b):
+	count=0
+	for i in range(n):
+		if (b[i]==-1):
+			count+=1
+	print("\nabsent no. of student:-\t ",count)
+
+def h_freq(n,b):
+	count=0
+	c=high_scr(n,b)
+	for i in range(n):
+		if (b[i]!=-1):
+			if (b[i]==c):
+				count+=1
+	print("\n highest frequency is :-\t ",count)
+
+def main():
+	print("**********MENU**********")
+	print("\n1:avg score \n2:high score & low score\n3:absent no. of student \n4:highest frequency \n5:Exit")
+	while True:
+		choice = input("Enter your choice: ")
+		if choice == "0":
+		    marks = []
+		    num=int(input("\n enter the no of std:"))
+			
+		    accept(num,marks)
+		if choice == "1":
+		    avg_scr(num,marks)
+		if choice == "2":
+			high_scr(num,marks)
+			low_scr(num,marks)
+		if choice == "3":
+			abst(num,marks) 
+		if choice == "4": 
+			h_freq(num,marks)
+		if choice == "5": 
+			print("**********THANK YOU**********")
+			break	
+
+main()
+				
+	
+		 
