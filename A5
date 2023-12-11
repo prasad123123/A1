@@ -1,0 +1,112 @@
+def long():
+    Str=str(input("\n enter the str :- "))
+    n=len(Str)
+    m=""
+    i=0
+    while(i<n):
+        word=""
+        while (Str[i]!=' '):
+            word+=Str[i]
+            i+=1
+            if(i==n):
+                break
+        if (i!=n):
+            while(Str[i]==' '):
+                i+=1
+        if(len(m)<len(word)):
+            m=word
+    print("\tWord with longest length is %s having lenght %d\n\n"%(m,len(m)))
+def occ():
+    Str=str(input("\n enter the str :- "))
+    n=len(Str)
+    c=input("\n enter the char:- ")
+    cnt=0
+    for i in range (n):
+        if(Str[i]==c):
+            cnt+=1
+    print("\tFrequency of occurrence of character(%s) in string(%s) is %d\n\n"%(c,Str,cnt))
+     
+def pal():   
+    Str=str(input("\n enter the str :- "))
+    rev=Str[::-1]
+    if(Str==rev):
+        print("\t%s string is an palindrome string\n\n"%Str)
+    else:
+        print("\t%s string is not an palindrome string\n\n"%Str)
+        
+def sub():
+    Str=str(input("\n enter the str :- "))
+    S=str(input("\n enter the :- "))
+    n1=len(Str)
+    n2=len(S)
+    for i in range (n1-n2+1):
+        ans=1
+    for j in range (n2):
+        if (Str[i+j]!=S[j]):
+            ans=0
+            break
+        if(ans == 1) :
+            print("Substring %s found at index %d\n\n"%(S,i))
+            break
+    if(ans == 0) :
+        print("Substring not found in the main string\n\n")
+        
+def ocw():
+    Str=str(input("\n enter the str :- "))
+    n=len(Str)
+    cnt=[]
+    m=[]
+    i=0
+    while(i<n):
+        word=""
+        while (Str[i]!=' '):
+            word+=Str[i]
+            i+=1
+            if(i==n):
+                break
+        if (i!=n):
+            while(Str[i]==' '):
+                i+=1
+        if(len(m)==0):
+            m.append(word)
+            cnt.append(1)
+        else:
+            ans=1
+            for j in range (len(m)):
+                if(m[j]==word):
+                    cnt[j]+=1
+                    ans=0
+                    break
+            if(ans==1):
+                m.append(word)
+                cnt.append(1) 
+    for i in range (len(m)):
+        print("\t%15s : %d "%(m[i],cnt[i]))
+            
+def main():
+    while True :
+        print ("\t\t  **** STRING OPERATIONS ****")
+        print ("\t\t1 : Display word with longest length")
+        print ("\t\t2 : Determine the frequency of occurrence of particular character in the string")
+        print ("\t\t3 : Check whether given string is palindrome or not ")
+        print ("\t\t4 : Display index of first appearance of the substring")
+        print ("\t\t5 : Count the occurrences of each word in a given string")
+        print ("\t\t6 : Exit")
+        ch = int(input("Enter your choice : "))
+        if (ch == 6):
+            print ("End of Program")
+            quit()
+        elif (ch == 1) :
+            long()
+        elif (ch == 2) :
+            occ()
+        elif (ch == 3) :
+            pal()
+        elif (ch == 4) :
+            sub()
+        elif (ch == 5) :
+            ocw()
+        else :
+            print ("Wrong choice entered !! Try again")
+
+main()               
